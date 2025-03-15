@@ -7,6 +7,7 @@ import java.util.*;
 
 
 // } Driver Code Ends
+
 // User function Template for Java
 // User function Template for Java
 
@@ -34,21 +35,22 @@ For Example -> return new Pair(minimum,maximum)
 */
 
 class Solution {
-    public Pair<Long, Long> getMinMax(int[] arr) {
+    public Pair<Integer, Integer> getMinMax(int[] arr) {
         // Code Here
         int min=arr[0];
         int max=arr[0];
         for(int i=0;i<arr.length;i++){
-            if(arr[i]>max){
-                max=arr[i];
-            }
-            if(arr[i]<min){
-                min=arr[i];
-            }
+           if(max<arr[i]){
+               max=arr[i];
+           }
+           if(min>arr[i]){
+               min=arr[i];
+           }
         }
-        return new Pair(min,max);
+    return new Pair(min,max);
     }
 }
+
 
 
 //{ Driver Code Starts.
@@ -89,11 +91,11 @@ class GFG {
             for (int i : array) arr[idx++] = i;
 
             Solution ob = new Solution();
-            Pair<Long, Long> pp = ob.getMinMax(arr);
+            Pair<Integer, Integer> pp = ob.getMinMax(arr);
             System.out.println(pp.getKey() + " " + pp.getValue());
-        
-System.out.println("~");
-}
+
+            System.out.println("~");
+        }
     }
 }
 
