@@ -12,29 +12,51 @@ import java.util.*;
 class GFG {
     ArrayList<Integer> find(int arr[], int x) {
         // code here
-        ArrayList<Integer>list = new ArrayList<>();
-        int n =arr.length;
-    int i = 0;
-    int start = -1;
-    int end = -1;
-    while(i<n){
-        if(arr[i]==x){
-            start = i;
-            break;
-        }
-        i++;
+        int fist = firstoccurence(arr,x);
+        int last = lastoccurence(arr,x);
+         ArrayList<Integer> result = new ArrayList<>();
+         result.add(fist);
+         result.add(last);
+         return result;
+       
     }
-    int j = 0;
-    while(j<n){
-        if(arr[j] == x){
-            end = j;
+static int firstoccurence(int arr[] , int x){
+        int ans = -1;
+        int  low  =0;
+        int high = arr.length-1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(arr[mid] == x){
+                ans = mid;
+                high = mid -1;
+            }
+            else if(arr[mid] < x){
+                low = mid +1;
+            }
+            else{
+                high = mid - 1;
+            }
         }
-        j++;
+        return ans;
     }
-    list.add(start);
-    list.add(end);
-    return list;
-        
+    static int lastoccurence(int arr[] , int x){
+        int ans = -1;
+        int low =0;
+        int high =arr.length-1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(arr[mid] == x){
+                ans =mid;
+                low = mid+1;
+            }
+            else if(arr[mid] < x){
+                low = mid+1;
+            }
+            else {
+                high = mid-1;
+            }
+        }
+        return ans;
     }
 }
 
